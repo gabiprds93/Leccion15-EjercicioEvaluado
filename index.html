@@ -2,9 +2,11 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
-        <title>Document</title>
+        <title>Venta de Pasjes</title>
     </head>
     <body>
+        <h1 align="center">Venta de Pasajes</h1>
+        <h2>Asientos</h2>
         <table border="1">
             <tr>
                 <td><button>4</button></td>
@@ -47,16 +49,21 @@
                 <td><button>29</button></td>
             </tr>
         </table>
-        <p>DNI: <input type="text" id="dniBuscar"> <input type="button" value="Buscar" id="btnBuscar" onclick="buscar()"></p>
+        <p>
+            DNI: <input type="text" id="dniBuscar">
+            <input type="button" value="Buscar" id="btnBuscar" onclick="buscar()">
+        </p>
         <hr>
+        <p>Asiento: <input type="text" id="asiento" disabled></p>
         <p>Nombre: <input type="text" id="nombre"></p>
         <p>Apellido: <input type="text" id="apellido"></p>
         <p>DNI: <input type="text" id="dni"></p>
-        <p>Asiento: <input type="text" id="asiento" disabled></p>
-        <input type="button" value="Reservar" id="btnReservar" onclick="reservar()">
-        <input type="button" value="Cancelar" id="btnCancelar" onclick="cancelar()"><br><br>
+        <p>
+            <input type="button" value="Reservar" id="btnReservar" onclick="reservar()">
+            <input type="button" value="Cancelar" id="btnCancelar" onclick="cancelar()">
+        </p>
         <hr>
-        <input type="button" value="Listar" id="btnListar" onclick="listar()">
+        <p><input type="button" value="Listar" id="btnListar" onclick="listar()"></p>
         <div id="listar"></div>
         <script src="main.js"></script>
     </body>

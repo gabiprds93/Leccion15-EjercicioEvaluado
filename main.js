@@ -16,6 +16,7 @@ function redirect(event)
     numAsiento = (event.target.textContent);
     asiento.value = numAsiento;
     mostrar(numAsiento - 1);
+    nombre.focus();
 }
 
 function Info(nombre, apellido, dni, asiento)
@@ -28,15 +29,23 @@ function Info(nombre, apellido, dni, asiento)
 
 function reservar()
 {
-    arreglo[numAsiento - 1] = new Info(nombre.value, apellido.value, dni.value, numAsiento);
-    limpiarTodo(true);
-    for(var i in celdas)
+    if(asiento.value != "" && nombre.value != "" && apellido.value != "" && dni.value != "")
     {
-        if(celdas[i].textContent == numAsiento)
+        arreglo[numAsiento - 1] = new Info(nombre.value, apellido.value, dni.value, numAsiento);
+        limpiarTodo(true);
+        for(var i in celdas)
         {
-            celdas[i].firstChild.style = "background-color: red";
-            break;
+            if(celdas[i].textContent == numAsiento)
+            {
+                celdas[i].firstChild.style = "background-color: #ffd1a3";
+                break;
+            }
         }
+    }
+    else
+    {
+        alert("Faltan datos");
+        nombre.focus();
     }
 }
 
@@ -73,10 +82,10 @@ function cancelar()
 
 function buscar()
 {
-    var dniBuscar = document.getElementById("dniBuscar").value;
+    var dniBuscar = document.getElementById("dniBuscar");
     for(var i in arreglo)
     {
-        if(dniBuscar == arreglo[i].dni)
+        if(dniBuscar.value == arreglo[i].dni)
         {
             mostrar(i);
             asiento.value = arreglo[i].asiento;
@@ -84,9 +93,15 @@ function buscar()
         }
         else
         {
-            limpiarTodo(true);
+            if(i == arreglo.length - 1)
+            {
+                limpiarTodo(true);
+                alert("No se encontro el DNI");
+            }
         }
     }
+    dniBuscar.value = "";
+    dniBuscar.focus();
 }
 
 function listar()
